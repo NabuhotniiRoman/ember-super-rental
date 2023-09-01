@@ -18,4 +18,15 @@
       <span>Number of bedrooms:</span> 15
     </div>
   </div>
+
+  <Map
+    @lat={{@rental.location.lat}}
+    @lng={{@rental.location.lng}}
+    @zoom="12"
+    @width="894"
+    @height="600"
+    alt="A map of {{@rental.title}}"
+    class="large"
+  />
+
 </article>
