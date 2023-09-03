@@ -19,7 +19,7 @@ export default class ScalableMapComponent extends Component {
 
     map.on('load', async () => {
       await new mapboxgl.Marker({
-        color: '#FFFFFF',
+        color: '#a50000',
         scale: 2,
         offset: [220, -260],
         anchor: 'bottom',
