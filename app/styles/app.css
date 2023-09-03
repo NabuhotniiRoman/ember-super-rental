@@ -472,3 +472,15 @@ p {
   padding: 0;
   border: 0;
 }
+
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib.mapboxgl-compact {
+  display: none;
+}
+
+#scalable-map {
+  overflow: hidden;
+  margin-left: 20px;
+  width: 924px;
+  height: 550px;
+  margin-bottom: 50px;
+}
