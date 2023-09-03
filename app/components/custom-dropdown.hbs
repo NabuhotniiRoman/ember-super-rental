@@ -1,0 +1,13 @@
+<div class="custom-dropdown">
+  <button type="button" class="selected-item" {{on "click" this.toggleDropdown}}>
+    {{this.selected}}
+    <span class="arrow">▼</span>
+  </button>
+  {{#if this.dropdownState.isDropdownOpen }}
+    <ul class="dropdown-list">
+      {{#each this.allRentalLocations as |item|}}
+        <li {{on "click" (fn this.toggleDropdown item)}} role="button">{{item}}</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>
