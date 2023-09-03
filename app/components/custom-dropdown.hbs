@@ -1,6 +1,6 @@
 <div class="custom-dropdown">
   <button type="button" class="selected-item" {{on "click" this.toggleDropdown}}>
-    {{this.selected}}
+    {{this.dropdownState.selectedValue}}
     <span class="arrow">▼</span>
   </button>
   {{#if this.dropdownState.isDropdownOpen }}

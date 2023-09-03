@@ -6,6 +6,7 @@ import { later } from '@ember/runloop';
 
 export default class DropdownStateService extends Service.extend(Evented) {
   @tracked isDropdownOpen = false;
+  @tracked selectedValue = 'All';
 
   @action toggleDropdownOff() {
     later(this, function () {
@@ -16,6 +17,18 @@ export default class DropdownStateService extends Service.extend(Evented) {
   @action toggleDropdownOn() {
     later(this, function () {
       this.isDropdownOpen = true;
+    });
+  }
+
+  @action setSelectedValue(value) {
+    later(this, function () {
+      this.selectedValue = value;
+    });
+  }
+
+  @action setDefaultValue() {
+    later(this, function () {
+      this.selectedValue = 'All';
     });
   }
 }

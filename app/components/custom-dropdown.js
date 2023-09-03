@@ -1,11 +1,9 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class CustomDropdown extends Component {
   @service dropdownState;
-  @tracked selected = 'All';
 
   @action toggleDropdown(value) {
     if (this.dropdownState.isDropdownOpen) {
@@ -17,7 +15,7 @@ export default class CustomDropdown extends Component {
     let { rentals } = this.args;
     const locations = rentals.map((rental) => rental.city);
     if (locations.includes(value) || value === 'All') {
-      this.selected = value;
+      this.dropdownState.setSelectedValue(value);
     }
   }
 
@@ -31,7 +29,7 @@ export default class CustomDropdown extends Component {
   getRentalsLocations() {
     let { rentals } = this.args;
 
-    rentals = rentals.filter((rental) => rental.city === this.selected);
+    rentals = rentals.filter((rental) => rental.city === this.dropdownState.selectedValue);
 
     return rentals;
   }

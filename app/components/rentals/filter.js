@@ -7,9 +7,10 @@ export default class RentalsFilterComponent extends Component {
     let { rentals, query, useDropDown } = this.args;
 
     if (query) {
-      useDropDown();
-      this.dropdownState.toggleDropdownOff();
       rentals = rentals.filter((rental) => rental.title.includes(query));
+      this.dropdownState.toggleDropdownOff();
+      this.dropdownState.setDefaultValue();
+      useDropDown();
     }
 
     return rentals;
