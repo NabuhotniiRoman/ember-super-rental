@@ -551,4 +551,9 @@ p {
   font-style: italic;
   margin-left: 50px;
 }
-
+.github-img {
+  position: absolute;
+  height: 20px !important;
+  top: 2px !important;
+  right: 15px !important;
+}
