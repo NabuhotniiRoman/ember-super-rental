@@ -1,13 +1,9 @@
 <div class="rentals">
   <div class="search-section">
-    <label>
-      <span>Where would you like to stay?</span>
-      <Input @value={{this.query}} class="light"/>
-    </label>
+    <Rentals::Filter @rentals={{@rentals}}/>
     <div class="selected-location">
       <p>Select Location</p>
-      <CustomDropdown @rentals={{@rentals}} @useDropDown={{this.useDropDown}}  @selected={{this.selectedValue}}
-                      @isWasUsedOutSide={{this.isDropDownWasUsed}}/>
+      <CustomDropdown @rentals={{@rentals}} />
     </div>
   </div>
   <ul class="results">
@@ -18,13 +14,21 @@
         </li>
       {{/each}}
     {{else}}
-      <Rentals::Filter @useDropDown={{this.useDropDown}} @rentals={{@rentals}} @query={{this.query}} as |results|>
-        {{#each results as |rental|}}
+      {{#if this.dropdownState.filteredByInput }}
+        {{#each this.dropdownState.filteredByInput as |rental|}}
           <li>
             <Rental @rental={{rental}} />
           </li>
         {{/each}}
-      </Rentals::Filter>
+      {{else}}
+        {{#unless this.dropdownState.searchInputValue.length }}
+          {{#each @rentals as |rental|}}
+            <li>
+              <Rental @rental={{rental}} />
+            </li>
+          {{/each}}
+        {{/unless}}
+      {{/if}}
     {{/if}}
   </ul>
 </div>

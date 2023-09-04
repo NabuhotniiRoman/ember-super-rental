@@ -1,18 +1,11 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
 
 export default class RentalsFilterComponent extends Component {
   @service dropdownState;
-  get results() {
-    let { rentals, query, useDropDown } = this.args;
-
-    if (query) {
-      rentals = rentals.filter((rental) => rental.title.includes(query));
-      this.dropdownState.toggleDropdownOff();
-      this.dropdownState.setDefaultValue();
-      useDropDown();
-    }
-
-    return rentals;
+  @action handleInputChange(event) {
+    let { rentals } = this.args;
+    this.dropdownState.setSearchInputValue(event.target.value, rentals);
   }
 }
