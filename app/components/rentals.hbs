@@ -6,17 +6,25 @@
     </label>
     <div class="selected-location">
       <p>Select Location</p>
-      <CustomDropdown @rentals={{@rentals}} @useDropDown={{this.useDropDown}}  @selected={{this.selected}}
+      <CustomDropdown @rentals={{@rentals}} @useDropDown={{this.useDropDown}}  @selected={{this.selectedValue}}
                       @isWasUsedOutSide={{this.isDropDownWasUsed}}/>
     </div>
   </div>
   <ul class="results">
-    <Rentals::Filter @useDropDown={{this.useDropDown}} @rentals={{@rentals}} @query={{this.query}} as |results|>
-      {{#each results as |rental|}}
+    {{#unless this.dropdownState.filteredRentals }}
+      <Rentals::Filter @useDropDown={{this.useDropDown}} @rentals={{@rentals}} @query={{this.query}} as |results|>
+        {{#each results as |rental|}}
+          <li>
+            <Rental @rental={{rental}} />
+          </li>
+        {{/each}}
+      </Rentals::Filter>
+    {{else}}
+      {{#each this.dropdownState.filteredRentals as |rental|}}
         <li>
           <Rental @rental={{rental}} />
         </li>
       {{/each}}
-    </Rentals::Filter>
+    {{/unless}}
   </ul>
 </div>

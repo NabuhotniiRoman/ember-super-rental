@@ -6,7 +6,7 @@
   {{#if this.dropdownState.isDropdownOpen }}
     <ul class="dropdown-list">
       {{#each this.allRentalLocations as |item|}}
-        <li {{on "click" (fn this.toggleDropdown item)}} role="button">{{item}}</li>
+        <li {{on "click" (fn this.getRentalsLocations item)}} role="button">{{item}}</li>
       {{/each}}
     </ul>
   {{/if}}
