@@ -1,0 +1,10 @@
+{{#if this.dropdownState.isMapModalOpen }}
+  <div class="rental-modal">
+    <div class="rental-close-modal" title="Close modal" role="button" {{on "click" this.dropdownState.closeMapModal}}>X</div>
+    <ScalableMap
+      @lat={{this.dropdownState.rentalModal.location.lat}}
+      @lng={{this.dropdownState.rentalModal.location.lng}}
+      @zoom="12"
+    />
+  </div>
+{{/if}}

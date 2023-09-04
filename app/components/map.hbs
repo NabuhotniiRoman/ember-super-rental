@@ -3,6 +3,9 @@
     alt="Map image at coordinates {{@lat}},{{@lng}}"
     ...attributes
     src={{this.src}}
+    role="button"
+    title="Click to open map"
+    {{on "click" (fn this.dropdownState.toggleMapModal @rental)}}
     width={{@width}} height={{@height}}
   >
 </div>

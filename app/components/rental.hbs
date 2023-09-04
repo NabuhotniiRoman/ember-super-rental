@@ -6,7 +6,7 @@
   />
   <div class="details">
     <LinkTo @route='rental' @model={{@rental}}>
-      <h3>{{@rental.title}}</h3>
+      <h3 title="Click to open details">{{@rental.title}}</h3>
     </LinkTo>
     <div class="detail owner">
       <span>Owner:</span> {{@rental.owner}}
@@ -22,6 +22,7 @@
     </div>
   </div>
   <Map
+    @rental={{@rental}}
     @lat={{@rental.location.lat}}
     @lng={{@rental.location.lng}}
     @zoom="9"

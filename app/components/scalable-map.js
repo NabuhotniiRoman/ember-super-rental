@@ -15,6 +15,7 @@ export default class ScalableMapComponent extends Component {
       center: [lng, lat],
       zoom: zoom,
       dragRotate: false,
+      scrollZoom: false,
     });
 
     map.on('load', async () => {

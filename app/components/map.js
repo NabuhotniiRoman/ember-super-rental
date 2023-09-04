@@ -1,9 +1,11 @@
 import Component from '@glimmer/component';
 import ENV from 'super-rentals1/config/environment';
-
+import { inject as service } from '@ember/service';
 const MAPBOX_API = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/static';
 
 export default class MapComponent extends Component {
+  @service dropdownState;
+
   get src() {
     let { lng, lat, width, height, zoom } = this.args;
 

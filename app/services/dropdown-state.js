@@ -10,6 +10,20 @@ export default class InputServices extends Service.extend(Evented) {
   @tracked filteredRentals = null;
   @tracked filteredByInput = null;
   @tracked searchInputValue = '';
+  @tracked isMapModalOpen = false;
+  @tracked rentalModal = null;
+
+  @action toggleMapModal(rental) {
+    this.isMapModalOpen = !this.isMapModalOpen;
+
+    if (rental) {
+      this.rentalModal = rental;
+    }
+  }
+
+  @action closeMapModal() {
+    this.isMapModalOpen = false;
+  }
 
   @action setSearchInputValue(value, rentals) {
     this.filteredByInput = rentals.filter((rental) =>
