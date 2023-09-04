@@ -2,6 +2,7 @@
   <div class="air-quality">
     <div class="air-quality-container">
       <p class="air-quality-title">Air Quality</p>
+      {{log this.weatherQualityInfo}}
       <img
         class="air-image"
         height="50px"
@@ -40,6 +41,7 @@
         <p>
           <span class="bolder">Country:</span>
           {{this.weatherQualityInfo.location.country}}</p>
+        <p><span class="bolder">Location:</span> {{this.weatherQualityInfo.location.name}}</p>
         <p><span class="bolder">Region:</span> {{this.weatherQualityInfo.location.region}}</p>
         <p><span class="bolder"> Time Zone:</span> {{this.weatherQualityInfo.location.tz_id}}</p>
       </div>
