@@ -11,7 +11,13 @@
     </div>
   </div>
   <ul class="results">
-    {{#unless this.dropdownState.filteredRentals }}
+    {{#if this.dropdownState.filteredRentals }}
+      {{#each this.dropdownState.filteredRentals as |rental|}}
+        <li>
+          <Rental @rental={{rental}} />
+        </li>
+      {{/each}}
+    {{else}}
       <Rentals::Filter @useDropDown={{this.useDropDown}} @rentals={{@rentals}} @query={{this.query}} as |results|>
         {{#each results as |rental|}}
           <li>
@@ -19,12 +25,6 @@
           </li>
         {{/each}}
       </Rentals::Filter>
-    {{else}}
-      {{#each this.dropdownState.filteredRentals as |rental|}}
-        <li>
-          <Rental @rental={{rental}} />
-        </li>
-      {{/each}}
-    {{/unless}}
+    {{/if}}
   </ul>
 </div>
