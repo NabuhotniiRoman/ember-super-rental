@@ -1,0 +1,55 @@
+<div class="info-banner">
+  <div class="air-quality">
+    <div class="air-quality-container">
+      <p class="air-quality-title">Air Quality</p>
+      <img
+        class="air-image"
+        height="50px"
+        width="80px"
+        src="https://www.svgrepo.com/show/327830/air-quality-control-management-environment-ecology-purifier-pollution.svg"
+        alt="air-quality">
+    </div>
+    {{#if this.airQualityInfo.measurements }}
+      <div class="air-quality-params">
+      <span class="air-quality-name">
+        Latitude - {{this.airQualityInfo.coordinates.latitude}}
+      </span>
+        <span class="air-quality-name">
+        Latitude - {{this.airQualityInfo.coordinates.longitude}}
+      </span>
+        <span class="air-quality-name">
+          {{this.airQualityInfo.parameter.units}}
+        </span>
+        <ul>
+          {{#each this.airQualityInfo.measurements as |measure|}}
+            <li>
+              <span> Type:  {{measure.parameter}}-{{measure.value}}-{{measure.unit}}</span>
+              <span> Lust update date : {{formar-date measure.lastUpdated}}</span>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{else}}
+      <div class="no-found">No Data Found</div>
+    {{/if}}
+  </div>
+  <div class="weather-container">
+    <p class="air-quality-title">Weather</p>
+    <div class="weather-component">
+      <div class="flex-1">
+        <p>
+          <span class="bolder">Country:</span>
+          {{this.weatherQualityInfo.location.country}}</p>
+        <p><span class="bolder">Region:</span> {{this.weatherQualityInfo.location.region}}</p>
+        <p><span class="bolder"> Time Zone:</span> {{this.weatherQualityInfo.location.tz_id}}</p>
+      </div>
+      <div class="flex-2">
+        <h3 class="bolder">{{this.weatherQualityInfo.current.condition.text}}</h3>
+        <img width="200px" height="200px" src={{this.weatherQualityInfo.current.condition.icon}} alt="weathe-icon">
+        <p><span class="bolder">Fill like:</span> {{this.weatherQualityInfo.current.feelslike_c}} C</p>
+        <p><span class="bolder">Temp:</span> {{this.weatherQualityInfo.current.temp_c}} C</p>
+      </div>
+    </div>
+    <p><span class="bolder">Lust update: </span>{{formar-date this.weatherQualityInfo.location.localtime}}</p>
+  </div>
+</div>

@@ -46,6 +46,7 @@ module.exports = function (environment) {
   }
 
   ENV.MAPBOX_ACCESS_TOKEN = process.env.MAPBOX_ACCESS_TOKEN;
+  ENV.OPEN_WEATHER_TOKEN = process.env.OPEN_WEATHER_KEY;
 
   return ENV;
 };
