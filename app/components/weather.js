@@ -45,7 +45,7 @@ export default class Weather extends Component {
     const formattedName = city.replace(/\s+/g, '').toLowerCase();
     try {
       fetch(
-        `http://api.weatherapi.com/v1/current.json?key=ff729317f6f840eaaf3142549230409&q=${formattedName}`,
+        `https://api.weatherapi.com/v1/current.json?key=ff729317f6f840eaaf3142549230409&q=${formattedName}`,
       )
         .then((response) => {
           return response.json();
